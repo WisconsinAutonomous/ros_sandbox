@@ -1,1 +1,75 @@
-
+project: ros_sandbox
+default_containers: 
+  - dev
+  - vnc
+custom_cli_arguments:
+  gpus:
+    argparse:
+      action: 'store_true'
+    all:
+      runtime: nvidia
+  x11:
+    argparse:
+      action: 'store_true'
+    dev:
+      volumes:
+        - "/tmp/.X11-unix:/tmp/.X11-unix"
+      environment:
+        DISPLAY: ${DISPLAY}
+services:
+  dev: &dev_service
+    image: "atk/@{project}:dev"
+    hostname: "@{project}-dev"
+    container_name: "@{project}-dev"
+    build: &dev_build
+      context: "./"
+      dockerfile: "./containers/dev/dev.dockerfile"
+      network: "host"
+      args: &dev_build_args
+        PROJECT: "@{project}"
+        USER_UID: "@{uid}"
+        USER_GID: "@{gid}"
+        APT_DEPENDENCIES: "bash zsh vim git python3-pip"
+        PIP_REQUIREMENTS: "pandas matplotlib numpy>=1.19"
+        USER_GROUPS: "dialout video"
+        ROS_DISTRO: galactic
+    environment:
+      DISPLAY: vnc:0.0
+      NVIDIA_VISIBLE_DEVICES: "all"
+      NVIDIA_DRIVER_CAPABILITIES: "all"
+      ROS_WORKSPACE_SRC: "/home/@{project}/@{project}/workspace/src/"
+    volumes: 
+     - "@{project_root}:/home/@{container_username}/@{project}"
+    tty: true
+    working_dir: "/home/@{container_username}/@{project}/workspace"
+  nx:
+    <<: *dev_service
+    image: "atk/@{project}:nx"
+    hostname: "@{project}-nx"
+    container_name: "@{project}-nx"
+    build:
+      <<: *dev_build
+      args:
+        <<: *dev_build_args
+        CONTAINERNAME: "nx"
+  vnc:
+    image: "atk/@{project}:vnc"
+    hostname: "@{project}-vnc"
+    container_name: "@{project}-vnc"
+    build:
+      context: "./containers/vnc"
+      dockerfile: "./vnc.dockerfile"
+      network: "host"
+      args:
+        VNC_PASSWORD: "@{project}"
+        RUN_XTERM: "yes"
+        RUN_FLUXBOX: "yes"
+    environment:
+      RUN_XTERM: no
+      RUN_FLUXBOX: yes
+    ports:
+      - "8080:8080"
+      - "5900:5900"
+networks:
+  default:
+    name: "@{project}"
