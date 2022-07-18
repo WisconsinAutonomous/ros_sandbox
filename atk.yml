@@ -7,7 +7,10 @@ custom_cli_arguments:
     argparse:
       action: 'store_true'
     all:
-      runtime: nvidia
+      docker:
+        runtime: "nvidia"
+      singularity:
+        nv: true
   x11:
     argparse:
       action: 'store_true'
