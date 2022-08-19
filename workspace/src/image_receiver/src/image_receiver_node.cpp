@@ -5,7 +5,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#include "sensor_msgs/msg/Image.hpp"
+#include "sensor_msgs/msg/image.hpp"
 
 class ImageReceiverNode : public rclcpp::Node
 {
