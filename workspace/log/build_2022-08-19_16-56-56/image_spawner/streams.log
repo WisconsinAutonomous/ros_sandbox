@@ -1,4 +1,0 @@
-[0.021s] Invoking command in '/home/ros_sandbox/ros_sandbox/workspace/build/image_spawner': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --build /home/ros_sandbox/ros_sandbox/workspace/build/image_spawner -- -j48 -l48
-[0.035s] No such file or directory
-[0.035s] CMake Error: Generator: execution of make failed. Make command was: /usr/bin/gmake -j48 -l48 && 
-[0.042s] Invoked command in '/home/ros_sandbox/ros_sandbox/workspace/build/image_spawner' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --build /home/ros_sandbox/ros_sandbox/workspace/build/image_spawner -- -j48 -l48

@@ -1,2 +1,0 @@
-Invoking command in '/home/ros_sandbox/ros_sandbox/workspace/build/cpp_pubsub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --build /home/ros_sandbox/ros_sandbox/workspace/build/cpp_pubsub -- -j48 -l48
-Invoked command in '/home/ros_sandbox/ros_sandbox/workspace/build/cpp_pubsub' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --build /home/ros_sandbox/ros_sandbox/workspace/build/cpp_pubsub -- -j48 -l48
