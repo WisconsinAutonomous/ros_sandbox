@@ -12,15 +12,16 @@ class ImageReceiverNode : public rclcpp::Node
 	public:
 		ImageReceiverNode() : Node("image_receiver_node"), count_(0)
 		{
-			image_subscription = this->create_subscription<sensor_msgs::msg::Image>("image", 10, std::bind(&ImageReceiverNode::topic_callback, this, std::placeholders::_1));
+			image_subscription = this->create_subscription<sensor_msgs::msg::Image>("image", 10, std::bind(&ImageReceiverNode::image_received_callback, this, std::placeholders::_1));
 		}
 	private:
 		void image_received_callback (const sensor_msgs::msg::Image::SharedPtr msg) const
 		{
-			RCLPP_INFO(this->get_logger(), "Image received!");
+			RCLCPP_INFO(this->get_logger(), "Image received!");
 		}
 
 		rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr image_subscription;
+		size_t count_;
 
 };
 

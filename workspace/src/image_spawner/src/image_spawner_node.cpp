@@ -5,12 +5,14 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#include "sensor_msgs/msg/Image.hpp"
+#include "sensor_msgs/msg/image.hpp"
 #include "opencv2/opencv.hpp"
 #include "opencv2/core/hal/interface.h"
 #include "opencv2/core/types.hpp"
 #include "std_msgs/msg/header.hpp"
+#include "cv_bridge/cv_bridge.h"
 
+using namespace std::literals::chrono_literals;
 class ImageSpawnerNode : public rclcpp::Node
 {
 	public:
@@ -26,9 +28,9 @@ class ImageSpawnerNode : public rclcpp::Node
 			cv::Mat img(cv::Size(1280, 720), CV_8UC3);
 			cv::randu(img, cv::Scalar(0, 0, 0), cv::Scalar(255, 255, 255));
 
-			sensor_msgs::msg::Image::SharedPtr msg = cv_bridge::CvImage(std::msgs::msg::Header(), "bgr8", img).toImageMsg();
+			sensor_msgs::msg::Image::SharedPtr msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", img).toImageMsg();
 
-			publisher_->publish(*msg.get());
+			image_publisher->publish(*msg.get());
 		}
 
 		rclcpp::TimerBase::SharedPtr timer_;
