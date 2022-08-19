@@ -1,0 +1,8 @@
+source;share/image_spawner/hook/cmake_prefix_path.ps1
+source;share/image_spawner/hook/cmake_prefix_path.dsv
+source;share/image_spawner/hook/cmake_prefix_path.sh
+source;share/image_spawner/local_setup.bash
+source;share/image_spawner/local_setup.dsv
+source;share/image_spawner/local_setup.ps1
+source;share/image_spawner/local_setup.sh
+source;share/image_spawner/local_setup.zsh

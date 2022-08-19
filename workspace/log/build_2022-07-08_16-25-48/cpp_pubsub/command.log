@@ -1,0 +1,2 @@
+Invoking command in '/home/ros_sandbox/ros_sandbox/workspace/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ros_sandbox/ros_sandbox/workspace/src/cpp_pubsub -DCMAKE_INSTALL_PREFIX=/home/ros_sandbox/ros_sandbox/workspace/install/cpp_pubsub
+Invoked command in '/home/ros_sandbox/ros_sandbox/workspace/build/cpp_pubsub' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ros_sandbox/ros_sandbox/workspace/src/cpp_pubsub -DCMAKE_INSTALL_PREFIX=/home/ros_sandbox/ros_sandbox/workspace/install/cpp_pubsub

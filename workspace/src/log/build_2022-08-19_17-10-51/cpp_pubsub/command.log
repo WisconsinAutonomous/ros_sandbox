@@ -1,0 +1,4 @@
+Invoking command in '/home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --build /home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub -- -j48 -l48
+Invoked command in '/home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --build /home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub -- -j48 -l48
+Invoking command in '/home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --install /home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub
+Invoked command in '/home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/galactic /usr/bin/cmake --install /home/ros_sandbox/ros_sandbox/workspace/src/build/cpp_pubsub

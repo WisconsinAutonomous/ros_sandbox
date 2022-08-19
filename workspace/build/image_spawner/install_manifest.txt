@@ -1,0 +1,15 @@
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/ament_index/resource_index/package_run_dependencies/image_spawner
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/ament_index/resource_index/parent_prefix_path/image_spawner
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/environment/ament_prefix_path.sh
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/environment/ament_prefix_path.dsv
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/environment/path.sh
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/environment/path.dsv
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/local_setup.bash
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/local_setup.sh
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/local_setup.zsh
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/local_setup.dsv
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/package.dsv
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/ament_index/resource_index/packages/image_spawner
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/cmake/image_spawnerConfig.cmake
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/cmake/image_spawnerConfig-version.cmake
+/home/ros_sandbox/ros_sandbox/workspace/install/image_spawner/share/image_spawner/package.xml

@@ -1,0 +1,7 @@
+[01m[K/home/ros_sandbox/ros_sandbox/workspace/src/image_receiver/src/image_receiver_node.cpp:8:10:[m[K [01;31m[Kfatal error: [m[Ksensor_msgs/msg/Image.hpp: No such file or directory
+    8 | #include [01;31m[K"sensor_msgs/msg/Image.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/image_receiver.dir/build.make:76: CMakeFiles/image_receiver.dir/src/image_receiver_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/image_receiver.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
