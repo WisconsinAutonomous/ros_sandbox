@@ -4,6 +4,7 @@
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
+#include "rclcpp/time.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/image.hpp"
 #include "opencv2/opencv.hpp"
@@ -16,10 +17,11 @@ using namespace std::literals::chrono_literals;
 class ImageSpawnerNode : public rclcpp::Node
 {
 	public:
-		ImageSpawnerNode() : Node("image_spawner_node"), count_(0)
+		ImageSpawnerNode() : Node("image_spawner_node"), count_(0), clock_()
 		{
 			image_publisher = this->create_publisher<sensor_msgs::msg::Image>("image", 10);
 			timer_ = this->create_wall_timer(500ms, std::bind(&ImageSpawnerNode::timer_callback, this));
+			//clock_ = rclcpp::Clock::Clock();
 		}
 	private:
 		void timer_callback()
@@ -30,12 +32,16 @@ class ImageSpawnerNode : public rclcpp::Node
 
 			sensor_msgs::msg::Image::SharedPtr msg = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", img).toImageMsg();
 
+
+
+			msg->header.stamp = clock_.now();
 			image_publisher->publish(*msg.get());
 		}
 
 		rclcpp::TimerBase::SharedPtr timer_;
 		rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;
 		size_t count_;
+		rclcpp::Clock clock_;
 
 };
 
