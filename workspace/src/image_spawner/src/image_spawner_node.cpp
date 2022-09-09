@@ -19,7 +19,7 @@ class ImageSpawnerNode : public rclcpp::Node
 	public:
 		ImageSpawnerNode() : Node("image_spawner_node"), count_(0), clock_()
 		{
-			image_publisher = this->create_publisher<sensor_msgs::msg::Image>("image", 10);
+			image_pub = this->create_publisher<sensor_msgs::msg::Image>("image/original", 10);
 			timer_ = this->create_wall_timer(500ms, std::bind(&ImageSpawnerNode::timer_callback, this));
 			//clock_ = rclcpp::Clock::Clock();
 		}
@@ -35,11 +35,11 @@ class ImageSpawnerNode : public rclcpp::Node
 
 
 			msg->header.stamp = clock_.now();
-			image_publisher->publish(*msg.get());
+			image_pub->publish(*msg.get());
 		}
 
 		rclcpp::TimerBase::SharedPtr timer_;
-		rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher;
+		rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_pub;
 		size_t count_;
 		rclcpp::Clock clock_;
 
