@@ -12,6 +12,13 @@ def generate_launch_description():
     )
     ld.add_action(image_spawner)
 
+    # image processor
+    image_processor = Node(
+        package="cpp_image_processor",
+        executable="image_processor_node" 
+    )
+    ld.add_action(image_processor)
+
     # image receiver
     image_receiver = Node(
         package="cpp_image_receiver",
