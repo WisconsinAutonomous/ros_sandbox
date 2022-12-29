@@ -1,7 +1,6 @@
 project: ros_sandbox
 default_containers: 
   - dev
-  - vnc
 custom_cli_arguments:
   gpus:
     argparse:
@@ -35,7 +34,7 @@ services:
         APT_DEPENDENCIES: "bash zsh vim git python3-pip libopencv-dev"
         PIP_REQUIREMENTS: "pandas matplotlib numpy>=1.19"
         USER_GROUPS: "dialout video"
-        ROS_DISTRO: galactic
+        ROS_DISTRO: humble
     environment:
       DISPLAY: vnc:0.0
       NVIDIA_VISIBLE_DEVICES: "all"

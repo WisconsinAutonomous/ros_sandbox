@@ -11,7 +11,8 @@ ament_auto_find_build_dependencies()
      
 ament_auto_generate_code()    
      
-ament_auto_add_executable(image_receiver_node src/image_receiver_node.cpp)    
+# rclcpp_components_register_nodes(${PROJECT_NAME} "image_receiver::image_receiver_node")
+# ament_auto_add_executable(${PROJECT_NAME}_node src/${PROJECT_NAME}_node.cpp)    
      
 ament_auto_package(    
     CONFIG_EXTRAS "image_receiver-extras.cmake"    
