@@ -6,15 +6,15 @@ import math
 class ImageReceiverNode(Node):
     def __init__(self):
         super().__init__('image_receiver_node')
-        self.image_subscription = self.create_subscription(Image, "image", self.image_received_callback, 10)
+        self.image_sub = self.create_subscription(Image, "image/grayscale", self.image_callback, 10)
         self.clock_ = rclpy.clock.Clock()
-        self.image_subscription
+        self.image_sub
 
-    def image_received_callback(self, msg):
+    def image_callback(self, msg):
         cur_time = self.clock_.now()
         secs = cur_time.nanoseconds//1000000000 - msg.header.stamp.sec
         nsecs = cur_time.nanoseconds%1000000000 - msg.header.stamp.nanosec
-        self.get_logger().info(f"Image Received!\tTime diff: {secs}.{nsecs}\tseconds")
+        self.get_logger().info(f"Time diff: {secs}.{nsecs}s")
 
 def main(args=None):
     rclpy.init(args=args)

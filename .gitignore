@@ -7,3 +7,5 @@ COLCON_IGNORE
 # atk
 .atk-compose.yml
 
+.vscode/
+*.pyc
