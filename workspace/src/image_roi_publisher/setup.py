@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'traffic_light_spawner'
+package_name = 'image_roi_publisher'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'traffic_light_spawner_node = traffic_light_spawner.traffic_light_spawner_node:main'
+            'image_roi_publisher_node = image_roi_publisher.image_roi_publisher_node:main'
         ],
     },
 )

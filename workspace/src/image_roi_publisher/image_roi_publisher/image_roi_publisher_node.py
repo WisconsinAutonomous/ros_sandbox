@@ -12,10 +12,10 @@ import os
 import cv2
 import numpy as np
 
-class TrafficLightSpawner(Node):
+class ImageROIPublisher(Node):
 
     def __init__(self):
-        super().__init__('traffic_light_spawner')
+        super().__init__('image_roi_publisher')
         self.image_publisher = self.create_publisher(Image, "~/output/image", 1)
         self.roi_publisher = self.create_publisher(RoiArray, "~/output/rois", 1)
         self.bridge = CvBridge()
@@ -82,14 +82,14 @@ class TrafficLightSpawner(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    traffic_light_spawner = TrafficLightSpawner()
+    image_roi_publisher = ImageROIPublisher()
 
-    rclpy.spin(traffic_light_spawner)
+    rclpy.spin(image_roi_publisher)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    traffic_light_spawner.destroy_node()
+    image_roi_publisher.destroy_node()
     rclpy.shutdown()
 
 
