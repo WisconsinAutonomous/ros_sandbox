@@ -13,8 +13,8 @@ def generate_launch_description():
             emulate_tty=True,
             parameters=[
                 {"package_path":    "/home/ros_sandbox/ros_sandbox/workspace/src/traffic_light_spawner",
-                 "image_path":      "data/sample1.jpg",                  
-                 "roi_path":            "data/sample1.txt"} 
+                 "image_path":      "data/sample_many.jpg",                  
+                 "roi_path":        "data/sample_many.txt"} 
             ],
             # remappings=[
             #     ("~/output/image")
