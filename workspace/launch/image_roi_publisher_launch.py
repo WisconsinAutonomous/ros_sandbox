@@ -13,8 +13,8 @@ def generate_launch_description():
             emulate_tty=True,
             parameters=[
                 {"package_path":    "/home/ros_sandbox/ros_sandbox/workspace/src/image_roi_publisher",
-                 "image_path":      "data/traffic_lights/sample_many.jpg",                  
-                 "roi_path":        "data/traffic_lights/sample_many.txt"} 
+                 "image_path":      "data/traffic_signs/sample.jpg",                  
+                 "roi_path":        "data/traffic_signs/sample.txt"} 
             ],
             # remappings=[
             #     ("~/output/image")
