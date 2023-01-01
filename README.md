@@ -8,18 +8,18 @@ You can then replay the data to reproduce the data recorded by the ROS bag. More
 This is extremely useful for testing specific nodes in our ROS stack -- we can create a ROS bag of the direct inputs to the node we want to test
 which creates a very controlled testing environment. <b>Add your own nodes to produce artificial test data!</b>
 
-## `traffic_light_spawner` example
+## `image_roi_publisher` example
 To test the `traffic_light_state_determination` node, artificial test data (in the form of a ROS bag)
 was created that consisted of an image topic and an array of bounding boxes (a.k.a Region Of Interest) topic --
-the inputs to the `traffic_light_state_determination` node. This was done using the `traffic_light_spawner` node.
+the inputs to the `traffic_light_state_determination` node. This was done using the `image_roi_publisher` node.
 This node is largely the same as the basic tutorial publisher node [here](https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html).
 
 ### Node walkthrough
-The image topic and bounding boxes topic each get their data from a files in the `data` directory of the `traffic_light_spawner` node.
+The image topic and bounding boxes topic each get their data from a files in the `data/traffic_lights` directory of the `image_roi_publisher` node.
 The image is just a `.jpg` file, and the bounding boxes are stored in YOLOv5 label format in a `.txt` file.
-Three ROS parameters are used to tell `traffic_light_spawner` where the files are.
+Three ROS parameters are used to tell `image_roi_publisher` where the files are.
 
-https://github.com/WisconsinAutonomous/ros_sandbox/blob/b653f9629aecd7c3d5d3cfac72e6be9dce4472ae/workspace/src/traffic_light_spawner/traffic_light_spawner/traffic_light_spawner_node.py#L25-L27
+https://github.com/WisconsinAutonomous/ros_sandbox/blob/12051e5bf902230643709188d40874b85229e2ce/workspace/src/image_roi_publisher/image_roi_publisher/image_roi_publisher_node.py#L25-L27
 
 `package_path` is the absolute path to the package directory.<br>
 `image_path` is the path to the image file within the package directory.<br>
@@ -28,29 +28,29 @@ https://github.com/WisconsinAutonomous/ros_sandbox/blob/b653f9629aecd7c3d5d3cfac
 Inside the `timer_callback` (which goes off every 0.5 seconds), the node loads in the data from the image and label file if it hasn't already.
 
 For the image:
-https://github.com/WisconsinAutonomous/ros_sandbox/blob/b653f9629aecd7c3d5d3cfac72e6be9dce4472ae/workspace/src/traffic_light_spawner/traffic_light_spawner/traffic_light_spawner_node.py#L32-L36
+https://github.com/WisconsinAutonomous/ros_sandbox/blob/12051e5bf902230643709188d40874b85229e2ce/workspace/src/image_roi_publisher/image_roi_publisher/image_roi_publisher_node.py#L32-L36
 
 For the bounding boxes:
-https://github.com/WisconsinAutonomous/ros_sandbox/blob/b653f9629aecd7c3d5d3cfac72e6be9dce4472ae/workspace/src/traffic_light_spawner/traffic_light_spawner/traffic_light_spawner_node.py#L43-L48
+https://github.com/WisconsinAutonomous/ros_sandbox/blob/12051e5bf902230643709188d40874b85229e2ce/workspace/src/image_roi_publisher/image_roi_publisher/image_roi_publisher_node.py#L43-L48
 
 The image and bounding boxes now have to be packaged into a ROS message before they can be published to a ROS topic. For the image topic, we use the `sensor_msgs` `Image`, as this is what is used in the `WAutoDrive` ROS stack. For the bounding boxes topic, we use a custom ROS message called `ROIArray`. we copied over the `wauto_perception_msgs` from `WAutoDrive`, which has all of the custom ROS messages used by the perception stack.
 
 For the image message:
-https://github.com/WisconsinAutonomous/ros_sandbox/blob/b653f9629aecd7c3d5d3cfac72e6be9dce4472ae/workspace/src/traffic_light_spawner/traffic_light_spawner/traffic_light_spawner_node.py#L39-L41
+https://github.com/WisconsinAutonomous/ros_sandbox/blob/12051e5bf902230643709188d40874b85229e2ce/workspace/src/image_roi_publisher/image_roi_publisher/image_roi_publisher_node.py#L39-L41
 
 For the bounding boxes message:
-https://github.com/WisconsinAutonomous/ros_sandbox/blob/b653f9629aecd7c3d5d3cfac72e6be9dce4472ae/workspace/src/traffic_light_spawner/traffic_light_spawner/traffic_light_spawner_node.py#L50-L62
+https://github.com/WisconsinAutonomous/ros_sandbox/blob/12051e5bf902230643709188d40874b85229e2ce/workspace/src/image_roi_publisher/image_roi_publisher/image_roi_publisher_node.py#L50-L62
 
 Finally, we can publish these messages.
-https://github.com/WisconsinAutonomous/ros_sandbox/blob/b653f9629aecd7c3d5d3cfac72e6be9dce4472ae/workspace/src/traffic_light_spawner/traffic_light_spawner/traffic_light_spawner_node.py#L69-L70
+https://github.com/WisconsinAutonomous/ros_sandbox/blob/12051e5bf902230643709188d40874b85229e2ce/workspace/src/image_roi_publisher/image_roi_publisher/image_roi_publisher_node.py#L69-L70
 
 ### Launch file
 A simple launch file was used to run the node executable. It can be found in `workspace/launch/`, and ran with the command (from the `workspace` directory)
 ```
-ros2 launch launch/traffic_light_launch.py
+ros2 launch launch/image_roi_publisher_launch.py
 ```
 The most notable aspect of the launch file is the parameters section, where we tell the node where to look for the data files that we are going to publish.
-https://github.com/WisconsinAutonomous/ros_sandbox/blob/910c9e400a9cba31ebbb61d764403f349dd7d735/workspace/launch/traffic_light_launch.py#L14-L18
+https://github.com/WisconsinAutonomous/ros_sandbox/blob/12051e5bf902230643709188d40874b85229e2ce/workspace/launch/image_roi_publisher_launch.py#L14-L18
 
 Everything else is pretty standard, inspired the basic launch file tutorial [here](https://docs.ros.org/en/foxy/Tutorials/Intermediate/Launch/Creating-Launch-Files.html).
 
@@ -59,7 +59,7 @@ Once the node has been launched (using the launch file), it will start publishin
 ```
 ros2 topic list
 ```
-You should see a list of all the topics that are being published. These will include `traffic_light_spawner/traffic_light_spawner/output/image` and `traffic_light_spawner/traffic_light/spawner/output/rois`, which are the two topics that we are publishing from the `traffic_light_spawner` node. To record a ROS bag of these topics, use the following command:
+You should see a list of all the topics that are being published. These will include `image_roi_publisher/image_roi_publisher/output/image` and `image_roi_publisher/image_roi_publisher/output/rois`, which are the two topics that we are publishing from the `image_roi_publisher` node. To record a ROS bag of these topics, use the following command:
 ```
 ros2 bag record --all
 ```
