@@ -22,7 +22,9 @@ services:
   dev: &dev_service
     image: "atk/@{project}:dev"
     hostname: "@{project}-dev"
+    command: ""
     container_name: "@{project}-dev"
+    entrypoint: ""
     build: &dev_build
       context: "./"
       dockerfile: "./containers/dev/dev.dockerfile"
