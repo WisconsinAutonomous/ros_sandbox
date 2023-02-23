@@ -55,7 +55,10 @@ class ImageROIPublisher(Node):
             h = roi[4] * self.image.shape[0]
             roi_msg = Roi()
             roi_msg.id = i
-            roi_msg.classification.classification = ObjectClassification.WA_OBJECT_CLASSIFICATION_TRAFFIC_LIGHT
+            
+            # CHANGE THIS DEPENDING ON THE CLASS OF OBJECTS
+            roi_msg.classification.classification = ObjectClassification.WA_OBJECT_CLASSIFICATION_TRAFFIC_SIGN
+            
             roi_msg.bottom_left.x = cx-w/2
             roi_msg.bottom_left.y = cy+h/2
             roi_msg.top_right.x = cx+w/2
