@@ -57,7 +57,7 @@ class ImageLidarROIPublisher(Node):
                                     self.get_parameter('pc_path').get_parameter_value().string_value)
             print(pc_path)
             lidar = pd.read_pickle(pc_path)
-            lidar_points = np.concatenate((
+            lidar_points = np.hstack((
                 lidar["x"].reshape(-1, 1),
                 lidar["y"].reshape(-1, 1),
                 lidar["z"].reshape(-1, 1),
@@ -76,7 +76,15 @@ class ImageLidarROIPublisher(Node):
             roi_msg.id = i
             
             # CHANGE THIS DEPENDING ON THE CLASS OF OBJECTS
-            roi_msg.classification.classification = ObjectClassification.WA_OBJECT_CLASSIFICATION_TRAFFIC_SIGN
+            if roi[0] == 0:
+                roi_msg.classification.classification = ObjectClassification.WA_OBJECT_CLASSIFICATION_PEDESTRIAN
+            elif roi[0] == 1:
+                roi_msg.classification.classification = ObjectClassification.WA_OBJECT_CLASSIFICATION_CAR
+            elif roi[0] == 2:
+                roi_msg.classification.classification = ObjectClassification.WA_OBJECT_CLASSIFICATION_TRAFFIC_LIGHT
+            elif roi[0] == 3:
+                roi_msg.classification.classification = ObjectClassification.WA_OBJECT_CLASSIFICATION_TRAFFIC_SIGN
+
             
             roi_msg.bottom_left.x = cx-w/2
             roi_msg.bottom_left.y = cy+h/2
