@@ -128,7 +128,7 @@ class ImageLidarROIPublisher(Node):
 
         fields = [sensor_msgs.msg.PointField(
             name=n, offset=i*itemsize, datatype=ros_dtype, count=1)
-            for i, n in enumerate('xyzi')]
+            for i, n in enumerate(['x','y','z','intensity'])]
 
         header = std_msgs.msg.Header(frame_id=parent_frame, stamp=self.get_time_msg())
 
