@@ -13,8 +13,8 @@ def generate_launch_description():
             emulate_tty=True,
             parameters=[
                 {"package_path":    "/home/ros_sandbox/ros_sandbox/workspace/src/image_lidar_roi_publisher",
-                 "image_path":      "data/00002714.jpg",                  
-                 "roi_path":        "data/00002714.txt",
+                 "image_path":      "data/00002713.jpg",                  
+                 "roi_path":        "data/00002715.txt",
                  "pc_path":         "data/00002714.pkl"} 
             ],
             # remappings=[

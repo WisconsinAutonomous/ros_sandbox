@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'py_image_processor'
+package_name = 'multi_image_publisher'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'image_processor_node = py_image_processor.image_processor_node:main'
+            'multi_image_publisher_node = multi_image_publisher.multi_image_publisher_node:main'
         ],
     },
 )
