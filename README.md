@@ -8,6 +8,15 @@ You can then replay the data to reproduce the data recorded by the ROS bag. More
 This is extremely useful for testing specific nodes in our ROS stack -- we can create a ROS bag of the direct inputs to the node we want to test
 which creates a very controlled testing environment. <b>Add your own nodes to produce artificial test data!</b>
 
+## Repository structure
+This repository has a number of existing data publishers to use for creating ROS bags. These packages can be found in `workspace/src/`. Each of the packages has its own associated launch file that can be found in `workspace/launch/`. The existing packages so far are as follows:
+- `image_lidar_roi_publisher`: publishes an image, a LiDAR point cloud (specified by a .pkl file), and an array of ROIs (specified in YOLO format as a .txt file). This has been used to generate ROS bags for testing the sensor fusion node using the Pixset dataset.
+- `image_roi_publisher`: publishes an image and an array of ROIs (specified in YOLO format as a .txt file). At the time of writing this, it only publishes ROIs with one classification that is hard-coded in the node (more info in the example below). This has been used to generate ROS bags for testing the traffic light state node and the traffic sign classification node.
+- `multi_image_publisher`: publishes to as many image topics as the launch file specifies. This has been used to generate ROS bags for testing multi-image perception (i.e. to mimic the camera images coming from our sensor suite).
+- `video_publisher`: publishes a sequence of images to a single image topic that are read from a video. This has been used to generate ROS bags for testing the YOLO object detection node on videos taken at MCity.
+
+These packages should cover a lot of use cases for generating test ROS bags. That being said, it is very possible that your specific testing case will require some new functionality. **Please create a new package for new use cases!** That way, the old use cases are still handled (they were used at one point, so who's to say they won't be used again), while still accommodating more and more testing cases.
+
 ## `image_roi_publisher` example
 To test the `traffic_light_state_determination` node, artificial test data (in the form of a ROS bag)
 was created that consisted of an image topic and an array of bounding boxes (a.k.a Region Of Interest) topic --
