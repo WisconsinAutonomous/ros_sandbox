@@ -16,7 +16,7 @@ class VideoPublisher(Node):
 
     def __init__(self):
         super().__init__('video_publisher')
-        self.image_publisher = self.create_publisher(Image, "~/output/image", 1)
+        self.image_publisher = self.create_publisher(Image, "~/output/image", 2)
         self.bridge = CvBridge()
 
         self.declare_parameter('fps', 10)

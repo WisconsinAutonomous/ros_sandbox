@@ -18,9 +18,9 @@ class ImageLidarROIPublisher(Node):
 
     def __init__(self):
         super().__init__('image_lidar_roi_publisher')
-        self.image_publisher = self.create_publisher(sensor_msgs.msg.Image, "~/output/image", 1)
+        self.image_publisher = self.create_publisher(sensor_msgs.msg.Image, "~/output/image", 2)
         self.roi_publisher = self.create_publisher(RoiArray, "~/output/rois", 1)
-        self.pc_publisher = self.create_publisher(sensor_msgs.msg.PointCloud2, "~/output/pts", 1)
+        self.pc_publisher = self.create_publisher(sensor_msgs.msg.PointCloud2, "~/output/pts", 2)
         self.bridge = CvBridge()
 
         timer_period = 0.5  # seconds

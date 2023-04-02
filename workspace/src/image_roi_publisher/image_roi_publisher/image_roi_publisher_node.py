@@ -16,7 +16,9 @@ class ImageROIPublisher(Node):
 
     def __init__(self):
         super().__init__('image_roi_publisher')
-        self.image_publisher = self.create_publisher(Image, "~/output/image", 1)
+        # IMPORTANT: the "2" means that we use "best effort" reliability, which matches sensor data in the real stack
+        # the "1" means that we use "reliable" reliability, which matches ROI messages in the real stack
+        self.image_publisher = self.create_publisher(Image, "~/output/image", 2)
         self.roi_publisher = self.create_publisher(RoiArray, "~/output/rois", 1)
         self.bridge = CvBridge()
 

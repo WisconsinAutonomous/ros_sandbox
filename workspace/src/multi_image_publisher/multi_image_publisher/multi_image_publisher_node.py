@@ -31,7 +31,7 @@ class MultiImagePublisher(Node):
         self.image_publishers = []
         self.images = []
         for i in range(len(self.image_paths)):
-            self.image_publishers.append(self.create_publisher(Image, self.image_topics[i], 1))
+            self.image_publishers.append(self.create_publisher(Image, self.image_topics[i], 2))
 
             img_path = os.path.join(self.package_path, self.image_paths[i])
             print(img_path)
